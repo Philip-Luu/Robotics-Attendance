@@ -4,7 +4,7 @@ from datetime import datetime
 
 now = datetime.now()
 
-wb = load_workbook(filename = r"C:\Users\noaht\Documents\Student Attendance\Student Attendance Test.xlsx")
+wb = load_workbook(filename = "Excel Attendance Program\Student Attendance Test.xlsx")
 sheet = wb['Sheet1']
 
 
@@ -15,7 +15,7 @@ for row in sheet.iter_rows(min_row=2, max_row=69):
     CheckedIn.append(False)
 scanID = True
 while scanID:
-    wb.save(r"C:\Users\noaht\Documents\Student Attendance\Student Attendance Test.xlsx")
+    wb.save("Excel Attendance Program\Student Attendance Test.xlsx")
     validPrompt = False
     Error = False
     while validPrompt == False:
@@ -34,7 +34,6 @@ while scanID:
     print(sheet["E" + str(index)].value)
     if sheet["E" + str(index)].value == None:
         sheet['E'+ str(index)] = now.strftime("%H:%M")
-        print(now.strftime("%H:%M"))
         CheckedIn[index] = True
 
     else:
