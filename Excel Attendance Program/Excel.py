@@ -4,7 +4,7 @@ from datetime import datetime
 
 now = datetime.now()
 
-wb = load_workbook(filename = "Excel Attendance Program\Student Attendance Test.xlsx")
+wb = load_workbook(filename = "Excel Attendance Program\Student Attendance 9-27.xlsx")
 sheet = wb['Sheet1']
 
 
@@ -15,7 +15,7 @@ for row in sheet.iter_rows(min_row=2, max_row=69):
     CheckedIn.append(False)
 scanID = True
 while scanID:
-    wb.save("Excel Attendance Program\Student Attendance Test.xlsx")
+    wb.save("Excel Attendance Program\Student Attendance 9-27.xlsx")
     validPrompt = False
     Error = False
     while validPrompt == False:
@@ -25,7 +25,7 @@ while scanID:
         try:
             index = Name_ID.index(int(fullID)) + 2
             validPrompt = True
-        except ValueError:
+        except (ValueError, TypeError):
             validPrompt = validPrompt
             Error = True
             print("Invalid Entry")
