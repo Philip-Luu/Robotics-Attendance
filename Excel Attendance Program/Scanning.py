@@ -12,16 +12,20 @@ def scanPrompt(error):
     window.config(cursor = "none")
     window.title("Scan or Enter your Student ID Number")
 
-    Error = tk.Label(text ="", font=("arial", 15))
+    Error = tk.Label(text ="", font=("arial", 25))
     if error:
-        Error.configure(text="\n \n Please enter your student ID in the correct format, it should have a p, space, then the student number (p 80000).")
+        Error.configure(text="\n You have not completed the requirements, either complete your team application or join teams.")
+        Error.pack()
+        window.after(2000, lambda: Error.pack_forget())
+
+    
 
     Prompt = tk.Label(text="\n \n \n \n \n Scan or Enter your Student ID Number \n \n", font=("arial", 50), )
     Prompt.pack()
-
-    Success = tk.Label(text="Success", font=("arial", 75), fg="green")
-    Success.pack()
-    window.after(2000, lambda: Success.pack_forget())
+    if error == False:
+        Success = tk.Label(text="Success", font=("arial", 75), fg="green")
+        Success.pack()
+        window.after(2000, lambda: Success.pack_forget())
 
     Entry = tk.Entry(font=("arial", 35))
     Entry.bind('<Return>', submit)
