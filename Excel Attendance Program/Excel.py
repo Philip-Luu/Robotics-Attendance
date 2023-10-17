@@ -5,13 +5,19 @@ from datetime import datetime
 now = datetime.now()
 
 #Constants
-EXCEL_START_VALUE = 7
-EXCEL_END_VALUE = 122
+#First row to read
+EXCEL_START_VALUE = 2
+#Last row to read
+EXCEL_END_VALUE = 121
+#Relative path of excel file
 EXCEL_RELATIVE_PATH = "Excel Attendance Program\Student Attendance Template - Copy.xlsx"
+#Sheet name (Should be date)
+EXCEL_PAGE_NAME = "Sheet1"
+
 
 #Opening File
 wb = load_workbook(filename = EXCEL_RELATIVE_PATH)
-sheet = wb['Sheet1']
+sheet = wb[EXCEL_PAGE_NAME]
 
 
 #Getting data from sheet 
@@ -32,7 +38,7 @@ while scanID:
             exit()
         try:
             index = Name_ID.index(int(fullID)) + EXCEL_START_VALUE
-            if index <= (23):
+            if index >= 100:
                 MissingPermissionSlip = True
                 validPrompt = True
             else:

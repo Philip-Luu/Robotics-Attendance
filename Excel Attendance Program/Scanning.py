@@ -1,6 +1,6 @@
 import tkinter as tk
 terminate = False
-text = "0"
+text = ""
 
 def scanPrompt(error, missingPermissionSlip):
     def submit(event):
@@ -28,7 +28,7 @@ def scanPrompt(error, missingPermissionSlip):
     Prompt.pack()
     if error == False:
         if missingPermissionSlip:
-            Success = tk.Label(text="Success", font=("arial", 75), fg="yellow")
+            Success = tk.Label(text="Success", font=("arial", 75), fg="orange")
         else:
             Success = tk.Label(text="Success", font=("arial", 75), fg="green")
         Success.pack()
