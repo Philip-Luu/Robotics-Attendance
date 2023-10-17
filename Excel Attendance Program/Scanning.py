@@ -2,7 +2,7 @@ import tkinter as tk
 terminate = False
 text = "0"
 
-def scanPrompt(error):
+def scanPrompt(error, missingPermissionSlip):
     def submit(event):
         global text 
         text = Entry.get()
@@ -15,6 +15,10 @@ def scanPrompt(error):
     Error = tk.Label(text ="", font=("arial", 25))
     if error:
         Error.configure(text="\n You have not completed the requirements, either complete your team application or join teams.")
+        Error.pack()
+        window.after(2000, lambda: Error.pack_forget())
+    if missingPermissionSlip:
+        Error.configure(text="\n You have not turned in your permission slip. Please submit this before entry.")
         Error.pack()
         window.after(2000, lambda: Error.pack_forget())
 
