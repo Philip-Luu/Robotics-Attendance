@@ -27,7 +27,10 @@ def scanPrompt(error, missingPermissionSlip):
     Prompt = tk.Label(text="\n \n \n \n \n Scan or Enter your Student ID Number \n \n", font=("arial", 50), )
     Prompt.pack()
     if error == False:
-        Success = tk.Label(text="Success", font=("arial", 75), fg="green")
+        if missingPermissionSlip:
+            Success = tk.Label(text="Success", font=("arial", 75), fg="yellow")
+        else:
+            Success = tk.Label(text="Success", font=("arial", 75), fg="green")
         Success.pack()
         window.after(2000, lambda: Success.pack_forget())
 
@@ -45,10 +48,10 @@ def scanPrompt(error, missingPermissionSlip):
         if text[2] == "8":
             return text[2:8]
         else:
-            scanPrompt(True)
+            scanPrompt(True, False)
     elif text == "kill":
         return text[2:8]
     else:
-        scanPrompt(True)
+        scanPrompt(True, False)
 
     

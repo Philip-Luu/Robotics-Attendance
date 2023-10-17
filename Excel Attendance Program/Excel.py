@@ -5,8 +5,8 @@ from datetime import datetime
 now = datetime.now()
 
 #Constants
-EXCEL_START_VALUE = 5
-EXCEL_END_VALUE = 95
+EXCEL_START_VALUE = 7
+EXCEL_END_VALUE = 122
 EXCEL_RELATIVE_PATH = "Excel Attendance Program\Student Attendance Template - Copy.xlsx"
 
 #Opening File
@@ -20,27 +20,29 @@ for row in sheet.iter_rows(min_row=EXCEL_START_VALUE, max_row=EXCEL_END_VALUE):
     Name_ID.append(row[2].value)
     
 scanID = True
+MissingPermissionSlip = False
 while scanID:
     wb.save(EXCEL_RELATIVE_PATH)
     validPrompt = False
     Error = False
-    MissingPermissionSlip = False
     while validPrompt == False:
         fullID = scanPrompt(Error, MissingPermissionSlip)
+        MissingPermissionSlip = False
         if fullID == "ll":
             exit()
         try:
             index = Name_ID.index(int(fullID)) + EXCEL_START_VALUE
-            if index >= 63:
+            if index <= (23):
                 MissingPermissionSlip = True
+                validPrompt = True
             else:
                 validPrompt = True
         except (ValueError, TypeError):
             Error = True
 
     now = datetime.now()
-    if sheet["E" + str(index)].value == None:
-        sheet['E'+ str(index)] = now.strftime("%H:%M")
+    if sheet["D" + str(index)].value == None:
+        sheet['D'+ str(index)] = now.strftime("%H:%M")
     else:
-        sheet['F'+ str(index)] = now.strftime("%H:%M")
+        sheet['E'+ str(index)] = now.strftime("%H:%M")
     
