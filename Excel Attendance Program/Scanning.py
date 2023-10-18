@@ -17,10 +17,6 @@ def scanPrompt(error, missingPermissionSlip):
         Error.configure(text="\n You have not completed the requirements, either complete your team application or join teams.")
         Error.pack()
         window.after(2000, lambda: Error.pack_forget())
-    if missingPermissionSlip:
-        Error.configure(text="\n You have not turned in your permission slip. Please submit this before entry.")
-        Error.pack()
-        window.after(2000, lambda: Error.pack_forget())
 
     
 
