@@ -2,7 +2,7 @@ import tkinter as tk
 terminate = False
 text = ""
 
-def scanPrompt(error, missingPermissionSlip):
+def scanPrompt(error):
     def submit(event):
         global text 
         text = Entry.get()
@@ -23,10 +23,7 @@ def scanPrompt(error, missingPermissionSlip):
     Prompt = tk.Label(text="\n \n \n \n \n Scan or Enter your Student ID Number \n \n", font=("arial", 50), )
     Prompt.pack()
     if error == False:
-        if missingPermissionSlip:
-            Success = tk.Label(text="Success", font=("arial", 75), fg="orange")
-        else:
-            Success = tk.Label(text="Success", font=("arial", 75), fg="green")
+        Success = tk.Label(text="Success", font=("arial", 75), fg="green")
         Success.pack()
         window.after(2000, lambda: Success.pack_forget())
 
