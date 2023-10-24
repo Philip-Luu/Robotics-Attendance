@@ -8,7 +8,7 @@ now = datetime.now()
 #First row to read
 EXCEL_START_VALUE = 2
 #Last row to read
-EXCEL_END_VALUE = 125
+EXCEL_END_VALUE = 121
 #Relative path of excel file
 EXCEL_RELATIVE_PATH = "Excel Attendance Program\Preseason Attendance Post-Rookie.xlsx"
 #Sheet name (Should be date)
